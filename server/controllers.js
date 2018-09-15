@@ -16,11 +16,7 @@ module.exports = {
     deleteCake : (req, res) => Cake.findByIdAndRemove(req.params.id)
                                    .then(data => console.log("controllers: deleteCake", data) || res.json(data))
                                    .catch(errs => console.log("controllers: deleteCake had errors", errs) || res.json(errs)),
-    createReview : (req, res) => Cake.findOneAndUpdate(req.params.id, {$push: {reviews: {rating: req.body.rating, comment: req.body.comment}}}, {runValidators: true, new: true})
+    createReview : (req, res) => Cake.findByIdAndUpdate(req.params.id, {$push: {reviews: {rating: req.body.rating, comment: req.body.comment}}}, {runValidators: true, new: true})
                                      .then(data => console.log("controllers: createReview", data) || res.json(data))
                                      .catch(errs => console.log("controllers: createReview had errors", errs) || res.json(data))
-    // grabReviews : (req, res) => Cake.find(req.params.id)
-    //                                   .then(data => console.log("controllers: grabReviews", data) || res.json(data))
-    //                                   .catch(errs => console.log("controllers: grabReviews had errors", errs) || res.json(errs))
-
 }

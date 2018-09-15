@@ -3,7 +3,7 @@ const router = require("./server/routes.js");
 
 
 const app = xp();
-// app.use(express.static(__dirname + '/public/dist/public'));
+app.use(xp.static(__dirname + '/client/dist/client'));
 
 router(app);
 
